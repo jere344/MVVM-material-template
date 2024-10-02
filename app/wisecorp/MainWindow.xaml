@@ -1,0 +1,42 @@
+﻿<Window x:Class="wisecorp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wisecorp" 
+        mc:Ignorable="d" 
+        Title="MainWindow" Height="450" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/> <!-- top bar -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{DynamicResource MaterialDesignPaper}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/> <!-- blank space -->
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Click="Back_Btn" Background="Transparent" BorderBrush="Transparent" x:Name="btnBack" IsEnabled="{Binding CanGoBack, ElementName=MainNavigationFrame}">
+                <materialDesign:PackIcon Kind="ArrowLeft" Foreground="{DynamicResource MaterialDesignBody}" Width="20" Height="20"/>
+            </Button>
+            
+            <Button Grid.Column="1" Click="Next_Btn" Background="Transparent" BorderBrush="Transparent" x:Name="btnNext" IsEnabled="{Binding CanGoForward, ElementName=MainNavigationFrame}">
+                <materialDesign:PackIcon Kind="ArrowRight" Foreground="{DynamicResource MaterialDesignBody}" Width="20" Height="20"/>
+            </Button>
+            
+            <TextBlock Grid.Column="2" Text="{DynamicResource mortgageCalculator}" Foreground="{DynamicResource MaterialDesignBody}" FontSize="20" VerticalAlignment="Center" Margin="10,0,0,0" ToolTip="Click to open the GitHub repository" MouseLeftButtonDown="OpenGitHub" />
+            <Grid Grid.Column="1"/>
+            
+            <Button Grid.Column="4" Click="Open_Settings" Background="Transparent" BorderBrush="Transparent" x:Name="btnSettings" HorizontalAlignment="Right">
+                <materialDesign:PackIcon Kind="Cog" Foreground="{DynamicResource MaterialDesignBody}" Width="20" Height="20"/>
+            </Button>
+        </Grid>
+        
+        <Frame Grid.Row="1" x:Name="MainNavigationFrame" />
+    </Grid>
+</Window>
